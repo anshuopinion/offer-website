@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+import PageBanner from "../components/PageBanner";
+
+const LaptopPage = styled.div``;
 
 function Laptop() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <LaptopPage>
+      <PageBanner title="Laptop" />
+    </LaptopPage>
+  );
 }
 
-export default Laptop
+export default Laptop;

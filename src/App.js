@@ -20,9 +20,10 @@ function App() {
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        
+
         <Router>
-          <NavigationBar/>
+          {" "}
+          <NavigationBar />
           <Switch>
             <Route path="/mobile">
               <Mobile />

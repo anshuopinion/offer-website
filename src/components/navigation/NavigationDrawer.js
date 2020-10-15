@@ -3,7 +3,8 @@ import {
   ListItem,
   //   ListItemIcon,
   ListItemText,
-  SwipeableDrawer,
+  Drawer,
+  Button,
 } from "@material-ui/core";
 import React from "react";
 
@@ -18,25 +19,21 @@ function NavigationDrawer({ openHandler, closeHandler, open }) {
 
   return (
     <>
-      <SwipeableDrawer
-        anchor="top"
-        open={open}
-        onClose={closeHandler}
-        onOpen={openHandler}
-      >
+      <Drawer anchor="top" open={open} onClose={closeHandler}>
         <List>
           {itemLists.map(({ text, link }, index) => (
-            <ListItem button key={text}>
-              {/* <ListItemIcon>
+            <Link to={`/${link}`} key={text}>
+              <ListItem button onClick={closeHandler}>
+                {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <Link to={`/${link}`}>
-                <ListItemText primary={text} onClick={closeHandler} />
-              </Link>
-            </ListItem>
+
+                <ListItemText primary={text} />
+              </ListItem>
+            </Link>
           ))}
         </List>
-      </SwipeableDrawer>
+      </Drawer>
     </>
   );
 }

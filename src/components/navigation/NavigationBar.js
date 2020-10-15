@@ -1,4 +1,10 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
 import NavigationDrawer from "./NavigationDrawer";
@@ -16,8 +22,13 @@ function Navigation() {
     <>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon onClick={openHandler} />
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={openHandler}
+          >
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
             Anshu Opinion
