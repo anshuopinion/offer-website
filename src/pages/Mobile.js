@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
+import styled from "styled-components";
+import PageBanner from "../components/PageBanner";
+
+const StyledMobile = styled.div``;
 function Mobile() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <StyledMobile>
+      <PageBanner title="Mobiles" />
+    </StyledMobile>
+  );
 }
 
-export default Mobile
+export default Mobile;

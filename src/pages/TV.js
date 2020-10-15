@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+import PageBanner from "../components/PageBanner";
+const StyledTv = styled.div``;
 
 function TV() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <StyledTv>
+      <PageBanner title="TV" />
+    </StyledTv>
+  );
 }
 
-export default TV
+export default TV;
