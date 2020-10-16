@@ -17,19 +17,17 @@ box-sizing:border-box;
 html{
   box-sizing:border-box;
   scroll-behavior:smooth;
- 
+  
 }
 body{
   
 
   font-family: 'Roboto', sans-serif;
-
-
-
   a{
     text-decoration:none;
     color:inherit;
   }
+  
 }
 `;
 

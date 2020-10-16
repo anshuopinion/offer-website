@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Mobile from "./pages/Mobile";
 import TV from "./pages/TV";
 import Laptop from "./pages/Laptop";
+import ProductPage from "./components/ProductPage";
 
 function App() {
   return (
@@ -25,7 +26,10 @@ function App() {
           {" "}
           <NavigationBar />
           <Switch>
-            <Route path="/mobile">
+            <Route path="/mobile/:id">
+              <ProductPage />
+            </Route>
+            <Route exact path="/mobile">
               <Mobile />
             </Route>
             <Route path="/laptop">

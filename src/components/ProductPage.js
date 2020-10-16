@@ -1,0 +1,96 @@
+import { Button } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { withRouter } from "react-router-dom";
+import styled from "styled-components";
+import axios from "../axios";
+
+const StyledProductPage = styled.div`
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h3`
+  font-size: 1rem;
+  text-transform: capitalize;
+`;
+
+const StyledReactMarkdown = styled(ReactMarkdown)`
+  display: flex;
+  border: 1px solid #000;
+  text-align: start;
+  line-height: 2rem;
+  margin: 1rem 0;
+  padding: 1rem;
+`;
+const Range = styled.div`
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  background-color: ${(props) => props.theme.color.main};
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+`;
+const BuyBtn = styled(Button)`
+  background-color: ${(props) => props.theme.color.mainLight};
+  &:hover {
+    background-color: ${(props) => props.theme.color.mainDark};
+    color: #fff;
+  }
+  padding: 1rem 2rem;
+  align-self: flex-end;
+
+  ${(props) => props.theme.media.tablet} {
+    padding: 0.5rem 0.7rem;
+  } ;
+`;
+const ImageContainer = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: center;
+`;
+const Banner = styled.img`
+  width: 100%;
+
+  background-position: center;
+`;
+function ProductPage({ match }) {
+  //   console.log(match);
+  const product = "mobiles";
+  const [loadedProduct, setLoadedProduct] = useState();
+  useEffect(() => {
+    const fetchMobile = async () => {
+      await axios
+        .get(`${product}/${match.params.id}`)
+        .then((res) => setLoadedProduct(res.data));
+    };
+    fetchMobile();
+  }, [match]);
+  return (
+    <StyledProductPage>
+      {loadedProduct && (
+        <>
+          <Title>{loadedProduct.title}</Title>
+          <ImageContainer>
+            <Banner
+              src={`${
+                process.env.REACT_APP_SERVER_URL + loadedProduct.banner.url
+              }`}
+              alt={`${loadedProduct.title}`}
+            />
+          </ImageContainer>
+          <BuyBtn>
+            <a href={`${loadedProduct.buy}`}>BUY NOW</a>
+          </BuyBtn>
+          <StyledReactMarkdown
+            source={loadedProduct.description}
+            escapeHtml={false}
+          />
+          <Range>{loadedProduct.range}</Range>{" "}
+        </>
+      )}
+    </StyledProductPage>
+  );
+}
+
+export default withRouter(ProductPage);
