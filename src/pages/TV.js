@@ -1,14 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import PageBanner from "../components/PageBanner";
-const StyledTv = styled.div``;
+import CatPage from "../components/CatPage";
 
 function TV() {
   return (
-    <StyledTv>
-      <PageBanner title="TV" />
-      
-    </StyledTv>
+    <>
+      <CatPage type="tvs" />
+    </>
   );
 }
 

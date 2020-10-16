@@ -2,6 +2,11 @@ import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
 import NavigationDrawer from "./NavigationDrawer";
+import styled from "styled-components";
+
+const StyledAppBar = styled(AppBar)`
+  background-color: ${(props) => props.theme.color.mainDark};
+`;
 
 function Navigation() {
   const [open, setOpen] = useState(false);
@@ -14,7 +19,7 @@ function Navigation() {
   };
   return (
     <>
-      <AppBar position="static">
+      <StyledAppBar position="sticky">
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -33,7 +38,7 @@ function Navigation() {
           openHandler={openHandler}
           closeHandler={closeHandler}
         />
-      </AppBar>
+      </StyledAppBar>
     </>
   );
 }

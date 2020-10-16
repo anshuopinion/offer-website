@@ -12,7 +12,14 @@ import MobileIcon from "@material-ui/icons/PhoneAndroid";
 import LaptopIcon from "@material-ui/icons/Laptop";
 import TvIcon from "@material-ui/icons/LiveTv";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
+const StyledList = styled(List)`
+  color: ${(props) => props.theme.color.mainDark};
+  .MuiSvgIcon-root {
+    color: ${(props) => props.theme.color.mainDark};
+  }
+`;
 function NavigationDrawer({ openHandler, closeHandler, open }) {
   const itemLists = [
     { text: "Home", link: "", icon: <HomeIcon /> },
@@ -24,7 +31,7 @@ function NavigationDrawer({ openHandler, closeHandler, open }) {
   return (
     <>
       <Drawer anchor="top" open={open} onClose={closeHandler}>
-        <List>
+        <StyledList>
           {itemLists.map(({ text, link, icon }, index) => (
             <Link to={`/${link}`} key={text}>
               <ListItem button onClick={closeHandler}>
@@ -34,7 +41,7 @@ function NavigationDrawer({ openHandler, closeHandler, open }) {
               </ListItem>
             </Link>
           ))}
-        </List>
+        </StyledList>
       </Drawer>
     </>
   );

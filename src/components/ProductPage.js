@@ -39,11 +39,17 @@ const BuyBtn = styled(Button)`
   }
   padding: 1rem 2rem;
   align-self: flex-end;
-
-  ${(props) => props.theme.media.tablet} {
-    padding: 0.5rem 0.7rem;
+  font-size: 2rem;
+  width: 100%;
+  @media ${(props) => props.theme.media.tablet} {
+    font-size: 1rem;
+    padding: 0.12rem;
+  }
+  @media ${(props) => props.theme.media.mobileM} {
+    font-size: 0.7rem;
   } ;
 `;
+
 const ImageContainer = styled.div`
   width: 90%;
   display: flex;

@@ -1,14 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import PageBanner from "../components/PageBanner";
-
-const LaptopPage = styled.div``;
+import CatPage from "../components/CatPage";
 
 function Laptop() {
   return (
-    <LaptopPage>
-      <PageBanner title="Laptop" />
-    </LaptopPage>
+    <>
+      <CatPage type="laptops" />
+    </>
   );
 }
 

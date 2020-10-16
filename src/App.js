@@ -32,7 +32,7 @@ function App() {
             <Route exact path="/mobile">
               <Mobile />
             </Route>
-            <Route path="/laptop">
+            <Route exact path="/laptop">
               <Laptop />
             </Route>
             <Route path="/tv">
