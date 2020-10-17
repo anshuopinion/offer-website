@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import axios from "../axios";
+
+import { useHttpClient } from "../hooks/http-hooks";
+import ErrorModal from "./ErrorModal";
+import Spinner from "./Spinner";
 
 const StyledProductPage = styled.div`
   padding: 1rem;
@@ -62,38 +65,45 @@ const Banner = styled.img`
 `;
 function ProductPage({ match, type }) {
   //   console.log(match);
-
+  const { error, sendRequest, loading, clearError } = useHttpClient();
   const [loadedProduct, setLoadedProduct] = useState();
   useEffect(() => {
     const fetchMobile = async () => {
-      await axios
-        .get(`${type}/${match.params.id}`)
-        .then((res) => setLoadedProduct(res.data));
+      await sendRequest(`${type}/${match.params.id}`, "get").then((res) =>
+        setLoadedProduct(res.data)
+      );
     };
     fetchMobile();
-  }, [match, type]);
+  }, [match, type, sendRequest]);
   return (
-    <StyledProductPage>
-      {loadedProduct && (
-        <>
-          <Title>{loadedProduct.title}</Title>
-          <ImageContainer>
-            <Banner
-              src={`${loadedProduct.banner.formats.large.url}`}
-              alt={`${loadedProduct.title}`}
-            />
-          </ImageContainer>
-          <a href={`${loadedProduct.buy}`}>
-            <BuyBtn>BUY NOW</BuyBtn>
-          </a>
-          <StyledReactMarkdown
-            source={loadedProduct.description}
-            escapeHtml={false}
-          />
-          <Range>{loadedProduct.range}</Range>{" "}
-        </>
+    <>
+      <ErrorModal error={error} onClose={clearError} />
+      {loading ? (
+        <Spinner fullPage />
+      ) : (
+        <StyledProductPage>
+          {loadedProduct && (
+            <>
+              <Title>{loadedProduct.title}</Title>
+              <ImageContainer>
+                <Banner
+                  src={`${loadedProduct.banner.formats.large.url}`}
+                  alt={`${loadedProduct.title}`}
+                />
+              </ImageContainer>
+              <a href={`${loadedProduct.buy}`}>
+                <BuyBtn>BUY NOW</BuyBtn>
+              </a>
+              <StyledReactMarkdown
+                source={loadedProduct.description}
+                escapeHtml={false}
+              />
+              <Range>{loadedProduct.range}</Range>{" "}
+            </>
+          )}
+        </StyledProductPage>
       )}
-    </StyledProductPage>
+    </>
   );
 }
 

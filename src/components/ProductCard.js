@@ -74,7 +74,6 @@ const Banner = styled.img`
   }
 `;
 function ProductCard({ product, type }) {
-  console.log(product);
   return (
     <StyledBox boxShadow={4}>
       <Title>{product.title}</Title>

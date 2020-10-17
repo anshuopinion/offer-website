@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import axios from "../axios";
+
+import ErrorModal from "../components/ErrorModal";
 import HomeCard from "../components/HomeCard";
+import Spinner from "../components/Spinner";
+import { useHttpClient } from "../hooks/http-hooks";
 
 const StyledHome = styled.div``;
 const PageContainer = styled.div`
@@ -15,26 +18,35 @@ const PageContainer = styled.div`
   grid-column-gap: 1rem;
 `;
 function Home() {
+  const { error, sendRequest, loading, clearError } = useHttpClient();
+
   const [loadedPage, setLoadedPage] = useState([]);
   console.log(loadedPage);
   useEffect(() => {
     const fetchPage = async () => {
-      await axios.get("pages").then((res) => setLoadedPage(res.data));
+      await sendRequest("pages", "get").then((res) => setLoadedPage(res.data));
     };
     fetchPage();
-  }, []);
+  }, [sendRequest]);
   return (
-    <StyledHome>
-      {loadedPage && (
-        <PageContainer>
-          {loadedPage.map((page) => (
-            <Link to={`${page.url}`}>
-              <HomeCard page={page} />
-            </Link>
-          ))}
-        </PageContainer>
+    <>
+      <ErrorModal error={error} onClose={clearError} />
+      {loading ? (
+        <Spinner fullPage />
+      ) : (
+        <StyledHome>
+          {loadedPage && (
+            <PageContainer>
+              {loadedPage.map((page) => (
+                <Link to={`${page.url}`}>
+                  <HomeCard page={page} />
+                </Link>
+              ))}
+            </PageContainer>
+          )}
+        </StyledHome>
       )}
-    </StyledHome>
+    </>
   );
 }
 

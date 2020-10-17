@@ -25,7 +25,7 @@ function HomeCard({ page }) {
   return (
     <StyledHomeCard boxShadow={3}>
       <div className="image-conatiner">
-        <img src={`${page.banner.url}`} alt={`${page.title}`} />
+        <img src={`${page.banner.formats.small.url}`} alt={`${page.title}`} />
       </div>
       <h3>{`${page.title} Offers`}</h3>
     </StyledHomeCard>
