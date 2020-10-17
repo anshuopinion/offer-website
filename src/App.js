@@ -15,6 +15,7 @@ import Mobile from "./pages/Mobile";
 import TV from "./pages/TV";
 import Laptop from "./pages/Laptop";
 import ProductPage from "./components/ProductPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
               <Home />
             </Redirect>
           </Switch>
+          <Footer />
         </Router>
       </ThemeProvider>
     </StylesProvider>

@@ -17,10 +17,12 @@ box-sizing:border-box;
 html{
   box-sizing:border-box;
   scroll-behavior:smooth;
-  
+  height:100%;
 }
-body{
-  
+body{ 
+   min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
 
   font-family: 'Roboto', sans-serif;
   a{

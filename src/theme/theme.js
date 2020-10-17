@@ -16,6 +16,8 @@ export default {
     main: "#42f5b3",
     mainLight: "#75ffcc",
     mainDark: "#009172",
+    buyBtn: "#fa652f",
+    buyBtnLight: "#ff8b52",
   },
 
   breakpoints: {

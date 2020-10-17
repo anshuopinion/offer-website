@@ -5,10 +5,12 @@ import styled from "styled-components";
 
 import ErrorModal from "../components/ErrorModal";
 import HomeCard from "../components/HomeCard";
+import PageBanner from "../components/PageBanner";
 import Spinner from "../components/Spinner";
 import { useHttpClient } from "../hooks/http-hooks";
 
 const StyledHome = styled.div``;
+
 const PageContainer = styled.div`
   margin-top: 2rem;
   justify-content: center;
@@ -40,10 +42,11 @@ function Home() {
         <Spinner fullPage />
       ) : (
         <StyledHome>
+          <PageBanner src="" />
           {loadedPage && (
             <PageContainer>
               {loadedPage.map((page) => (
-                <Link to={`${page.url}`}>
+                <Link to={`${page.url}`} key={page.title}>
                   <HomeCard page={page} />
                 </Link>
               ))}

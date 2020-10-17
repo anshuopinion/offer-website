@@ -45,7 +45,6 @@ const StyledHomeCard = styled(Box)`
   }
 `;
 function HomeCard({ page }) {
-  console.log(page);
   return (
     <StyledHomeCard boxShadow={3}>
       <div className="image-conatiner">

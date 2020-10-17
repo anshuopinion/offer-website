@@ -42,10 +42,10 @@ const Range = styled.span`
   padding: 0.2rem 1rem;
 `;
 const BuyBtn = styled(Button)`
-  background-color: ${(props) => props.theme.color.mainLight};
+  background-color: ${(props) => props.theme.color.buyBtnLight};
+  color: #fff;
   &:hover {
-    background-color: ${(props) => props.theme.color.mainDark};
-    color: #fff;
+    background-color: ${(props) => props.theme.color.buyBtn};
   }
   @media ${(props) => props.theme.media.mobileL} {
     width: 6rem;
