@@ -16,6 +16,11 @@ const PageContainer = styled.div`
   grid-template-columns: auto auto;
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
+
+  @media ${(props) => props.theme.media.mobileL} {
+    grid-template-columns: auto;
+    grid-column-gap: 0;
+  } ;
 `;
 function Home() {
   const { error, sendRequest, loading, clearError } = useHttpClient();

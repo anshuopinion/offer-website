@@ -19,6 +19,30 @@ const StyledHomeCard = styled(Box)`
     margin-top: 5px;
     font-weight: 500;
   }
+
+  @media ${(props) => props.theme.media.tablet} {
+    width: 13rem;
+    height: 10rem;
+    .image-conatiner {
+      img {
+        width: 13rem;
+        height: 8rem;
+      }
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+  @media ${(props) => props.theme.media.mobileL} {
+    width: 16rem;
+    height: 14rem;
+    .image-conatiner {
+      img {
+        width: 16rem;
+        height: 11rem;
+      }
+    }
+  }
 `;
 function HomeCard({ page }) {
   console.log(page);
