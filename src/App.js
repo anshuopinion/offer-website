@@ -23,19 +23,30 @@ function App() {
         <GlobalStyle />
 
         <Router>
-          {" "}
           <NavigationBar />
           <Switch>
             <Route path="/mobile/:id">
-              <ProductPage />
+              <ProductPage type="mobiles" />
             </Route>
             <Route exact path="/mobile">
               <Mobile />
             </Route>
+            <Route path="/laptop/:id">
+              <ProductPage type="laptops" />
+            </Route>
             <Route exact path="/laptop">
               <Laptop />
             </Route>
+            <Route path="/tv/:id">
+              <ProductPage type="tvs" />
+            </Route>
             <Route path="/tv">
+              <TV />
+            </Route>
+            <Route path="/offer/:id">
+              <ProductPage type="offers" />
+            </Route>
+            <Route path="/offer">
               <TV />
             </Route>
             <Route exact path="/">

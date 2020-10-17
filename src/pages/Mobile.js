@@ -5,7 +5,7 @@ import CatPage from "../components/CatPage";
 function Mobile() {
   return (
     <>
-      <CatPage type="mobiles" />
+      <CatPage type="mobile" />
     </>
   );
 }

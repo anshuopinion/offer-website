@@ -60,18 +60,18 @@ const Banner = styled.img`
 
   background-position: center;
 `;
-function ProductPage({ match }) {
+function ProductPage({ match, type }) {
   //   console.log(match);
-  const product = "mobiles";
+
   const [loadedProduct, setLoadedProduct] = useState();
   useEffect(() => {
     const fetchMobile = async () => {
       await axios
-        .get(`${product}/${match.params.id}`)
+        .get(`${type}/${match.params.id}`)
         .then((res) => setLoadedProduct(res.data));
     };
     fetchMobile();
-  }, [match]);
+  }, [match, type]);
   return (
     <StyledProductPage>
       {loadedProduct && (
@@ -79,15 +79,13 @@ function ProductPage({ match }) {
           <Title>{loadedProduct.title}</Title>
           <ImageContainer>
             <Banner
-              src={`${
-                process.env.REACT_APP_SERVER_URL + loadedProduct.banner.url
-              }`}
+              src={`${loadedProduct.banner.formats.large.url}`}
               alt={`${loadedProduct.title}`}
             />
           </ImageContainer>
-          <BuyBtn>
-            <a href={`${loadedProduct.buy}`}>BUY NOW</a>
-          </BuyBtn>
+          <a href={`${loadedProduct.buy}`}>
+            <BuyBtn>BUY NOW</BuyBtn>
+          </a>
           <StyledReactMarkdown
             source={loadedProduct.description}
             escapeHtml={false}

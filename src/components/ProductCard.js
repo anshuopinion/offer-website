@@ -1,12 +1,14 @@
-import { Button, Card } from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 
 import React from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
-const StyledCard = styled(Card)`
+const StyledBox = styled(Box)`
+  box-shadow: ${(props) => props.theme.color.main};
   width: 35rem;
+  overflow: hidden;
   height: 450px;
   padding: 1rem;
   display: flex;
@@ -33,7 +35,7 @@ const Description = styled.p`
   margin: 1rem 0;
   color: ${(props) => props.theme.color.mainDark};
 `;
-const Range = styled.div`
+const Range = styled.span`
   text-transform: capitalize;
   margin-bottom: 1rem;
   background-color: ${(props) => props.theme.color.main};
@@ -71,26 +73,29 @@ const Banner = styled.img`
     width: 22rem;
   }
 `;
-function ProductCard({ product }) {
-  console.log(product.buy);
-
+function ProductCard({ product, type }) {
+  console.log(product);
   return (
-    <StyledCard>
+    <StyledBox boxShadow={4}>
       <Title>{product.title}</Title>
+
       <ImageContainer>
-        <Banner
-          src={`${process.env.REACT_APP_SERVER_URL + product.banner.url}`}
-          alt={`${product.title}`}
-        />
+        <Link to={`/${type}/${product.id}`}>
+          <Banner
+            src={`${product.banner.formats.small.url}`}
+            alt={`${product.title}`}
+          />
+        </Link>
       </ImageContainer>
+
       <Description>
-        <Link to={`/mobile/${product.id}`}>Click Here For key Features</Link>
+        <Link to={`/${type}/${product.id}`}>Click Here For key Features</Link>
       </Description>
       <Range>{product.range}</Range>
       <a href={`${product.buy}`}>
         <BuyBtn>BUY NOW</BuyBtn>
       </a>
-    </StyledCard>
+    </StyledBox>
   );
 }
 

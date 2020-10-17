@@ -4,7 +4,7 @@ import CatPage from "../components/CatPage";
 function TV() {
   return (
     <>
-      <CatPage type="tvs" />
+      <CatPage type="tv" />
     </>
   );
 }

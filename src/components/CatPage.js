@@ -17,21 +17,21 @@ const StyledContainer = styled(Container)`
     grid-template-columns: auto;
   }
 `;
-function CatPage({type}) {
+function CatPage({ type }) {
   const [loadedProducts, setLoadedProducts] = useState([]);
   useEffect(() => {
     const fetchMobile = async () => {
-      await axios.get(`${type}`).then((res) => setLoadedProducts(res.data));
+      await axios.get(`${type}s`).then((res) => setLoadedProducts(res.data));
     };
     fetchMobile();
   }, [type]);
 
   return (
     <StyledMobile>
-      <PageBanner title={type} />
+      <PageBanner title={`${type}s`} />
       <StyledContainer>
         {loadedProducts.map((product, i) => {
-          return <ProductCard product={product} key={i} />;
+          return <ProductCard type={type} product={product} key={i} />;
         })}
       </StyledContainer>
     </StyledMobile>
