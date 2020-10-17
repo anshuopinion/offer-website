@@ -16,7 +16,7 @@ import TV from "./pages/TV";
 import Laptop from "./pages/Laptop";
 import ProductPage from "./components/ProductPage";
 import Footer from "./components/Footer";
-
+import Other from "./pages/Other";
 function App() {
   return (
     <StylesProvider injectFirst>
@@ -44,11 +44,11 @@ function App() {
             <Route path="/tv">
               <TV />
             </Route>
-            <Route path="/offer/:id">
-              <ProductPage type="offers" />
+            <Route path="/other/:id">
+              <ProductPage type="others" />
             </Route>
-            <Route path="/offer">
-              <TV />
+            <Route path="/other">
+              <Other />
             </Route>
             <Route exact path="/">
               <Home />

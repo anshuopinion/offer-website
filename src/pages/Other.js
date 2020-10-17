@@ -2,12 +2,12 @@ import React from "react";
 
 import CatPage from "../components/CatPage";
 
-function Offer() {
+function Other() {
   return (
     <>
-      <CatPage type="offer" />
+      <CatPage type="other" />
     </>
   );
 }
 
-export default Offer;
+export default Other;
